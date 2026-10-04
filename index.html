@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExamHall</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>ExamHall</h1><div id="nav" hidden><span id="who"></span><button class="ghost" id="logout">Log out</button></div></header>
+<main>
+<section class="view" id="auth">
+  <form class="card col" id="authForm">
+    <h2>Enter the exam hall</h2>
+    <input id="name" placeholder="Your name" autocomplete="name" required>
+    <input id="phone" type="tel" inputmode="numeric" placeholder="Phone number" autocomplete="tel" required>
+    <input id="password" type="password" placeholder="Admin password" hidden>
+    <p class="msg" id="authMsg"></p>
+    <button id="authBtn">Continue</button>
+  </form>
+</section>
+
+<section class="view" id="home" hidden>
+  <h2>Available exams</h2>
+  <div id="exams"></div>
+  <h2>Your results</h2>
+  <table><thead><tr><th>Exam</th><th>Score</th><th>Date</th></tr></thead><tbody id="results"></tbody></table>
+  <div id="admin" hidden>
+    <h2>Admin: add an exam</h2>
+    <form class="card col" id="examForm">
+      <input id="exTitle" placeholder="Exam title" required>
+      <input id="exMin" type="number" min="1" placeholder="Duration in minutes" required>
+      <button>Add exam</button>
+    </form>
+    <h2>Admin: add a question</h2>
+    <form class="card col" id="qForm">
+      <select id="examSel"></select>
+      <input id="qText" placeholder="Question" required>
+      <input class="opt" placeholder="Option 1" required><input class="opt" placeholder="Option 2" required>
+      <input class="opt" placeholder="Option 3"><input class="opt" placeholder="Option 4">
+      <select id="qAns"><option value="0">Correct: option 1</option><option value="1">Correct: option 2</option><option value="2">Correct: option 3</option><option value="3">Correct: option 4</option></select>
+      <p class="msg" id="adminMsg"></p>
+      <button>Add question</button>
+    </form>
+    <h2>Admin: all results</h2>
+    <table><thead><tr><th>Student</th><th>Exam</th><th>Score</th><th>Date</th></tr></thead><tbody id="allResults"></tbody></table>
+  </div>
+</section>
+
+<section class="view" id="exam" hidden>
+  <div class="bar"><h2 id="title"></h2><div id="timer" role="timer" aria-live="off">00:00</div></div>
+  <div id="qs"></div>
+  <button id="finish">Submit exam</button>
+</section>
+
+<section class="view" id="result" hidden>
+  <div class="card center"><div class="big" id="score"></div><p id="verdict"></p><button id="back">Back to exams</button></div>
+  <h2>Answer review</h2>
+  <div id="review"></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
